@@ -234,3 +234,15 @@ input[type=range] { width: 100%; accent-color: var(--hiviz); height: 28px; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* policy pages (privacy, delete account) */
+.policy { max-width: 720px; padding-top: 48px; padding-bottom: 72px; }
+.policy h1 { font-size: clamp(38px, 7vw, 56px); color: var(--hiviz, var(--text)); }
+.policy .meta { color: var(--muted); font-size: 14px; margin-top: 10px; }
+.policy section { margin-top: 32px; }
+.policy h2 { font-size: 24px; margin-bottom: 10px; }
+.policy p, .policy li { color: var(--muted); font-size: 16px; line-height: 1.7; }
+.policy p + p { margin-top: 12px; }
+.policy ol { margin: 0; padding-left: 22px; }
+.policy a { color: var(--text); text-underline-offset: 3px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
