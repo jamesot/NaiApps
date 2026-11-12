@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101214">
+  <title>BodaPro · NaiApps</title>
+  <meta name="description" content="BodaPro — daily earnings, expenses and bike-loan freedom dashboard for Nairobi boda boda riders. Free for riders, works offline, never stores your location.">
+  <meta property="og:title" content="BodaPro — Rider earnings & bike loan">
+  <meta property="og:description" content="Know when you've hit today's target. See the day your bike becomes yours.">
+  <meta property="og:image" content="img/ring.jpg">
+  <link rel="icon" href="img/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="theme-bodapro">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../"><span class="brand-mark">N</span>NaiApps</a>
+      <nav>
+        <a href="#bike-yangu">Bike Yangu</a>
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="wrap bp-hero">
+      <div>
+        <div class="bp-id">
+          <img src="img/icon.png" alt="BodaPro app icon" width="64" height="64">
+          <div><strong>BodaPro</strong><span>Daily target ring &amp; bike loan</span></div>
+        </div>
+        <h1>Hit today's target.<br><span class="hl">Own your boda sooner.</span></h1>
+        <p class="lede">The earnings app for Nairobi boda boda riders. One glance answers the two questions every rider asks: have I hit today's target, and how far am I from owning this bike?</p>
+        <div class="chips">
+          <span class="chip on">Free for riders</span>
+          <span class="chip">Works offline</span>
+          <span class="chip">M-Pesa built in</span>
+          <span class="chip">English &amp; Kiswahili</span>
+          <span class="chip">Android &amp; iOS</span>
+        </div>
+        <p class="status">Coming soon to Google Play &amp; the App Store</p>
+      </div>
+
+      <div class="ring-card" aria-label="Interactive demo of the BodaPro target ring">
+        <div class="ring-top"><span>Today</span><span>Try it ↓</span></div>
+        <div class="toast" id="toast" role="status" aria-live="polite">M-Pesa +KSh 200 · added to your ring</div>
+        <div class="ring" id="ring">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="track" cx="60" cy="60" r="50" fill="none" stroke-width="11"/>
+            <circle class="bar" id="ringBar" cx="60" cy="60" r="50" fill="none" stroke-width="11" stroke-linecap="round"/>
+          </svg>
+          <div class="ring-label">
+            <div class="amt" id="ringAmt">KSh 750</div>
+            <div class="togo" id="ringTogo">to go</div>
+            <div class="tgt">Today's target KSh 3,000</div>
+          </div>
+        </div>
+        <div class="ring-actions">
+          <button class="btn btn-hiviz" id="addMpesa" type="button">M-Pesa +200</button>
+          <button class="btn btn-ghost" id="resetRing" type="button">Start over</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two questions -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Two questions. <span class="hl">One glance.</span></h2>
+          <p>Readable at arm's length in full sun, built dark-first in reflective-vest hi-viz.</p>
+        </div>
+        <div class="two-q">
+          <article class="q">
+            <div class="n">01 · THE RING</div>
+            <h3>Have I hit today's target?</h3>
+            <p>A big ring fills as you earn and shows exactly what's left: "KSh 750 to go". M-Pesa till payments land in the ring by themselves. Cash and fuel take two taps. Your target sets itself: your installment, plus your average fuel, plus a 15% buffer.</p>
+          </article>
+          <article class="q">
+            <div class="n">02 · BIKE YANGU</div>
+            <h3>How far am I from owning this bike?</h3>
+            <p>Your loan drawn as a road: installments paid, installments left, and the date the bike becomes yours. Pay an installment by M-Pesa from the app, keep your streak going, and see how a little extra each day brings ownership closer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulator -->
+    <section class="section" id="bike-yangu">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Pay a little extra.<br><span class="hl">See the finish line move.</span></h2>
+          <p>This is the same payoff calculation the app runs. Move the sliders to try your own loan.</p>
+        </div>
+        <div class="sim">
+          <div>
+            <div class="field">
+              <label for="loan">Loan left <output id="loanOut"></output></label>
+              <input type="range" id="loan" min="20000" max="250000" step="5000" value="100000">
+            </div>
+            <div class="field">
+              <label for="daily">Daily installment <output id="dailyOut"></output></label>
+              <input type="range" id="daily" min="200" max="1000" step="50" value="400">
+            </div>
+            <div class="field">
+              <label for="extra">Extra each day <output id="extraOut"></output></label>
+              <input type="range" id="extra" min="0" max="400" step="10" value="100">
+            </div>
+          </div>
+          <div>
+            <div class="road-row">
+              <div class="lbl"><span id="baseLbl">Paying KSh 400 a day</span><b id="baseDays">250 days</b></div>
+              <div class="road"><div class="fill" style="width:100%"><span class="yours">YOURS</span></div></div>
+            </div>
+            <div class="road-row">
+              <div class="lbl"><span id="fastLbl">Paying KSh 500 a day</span><b class="hl" id="fastDays">200 days</b></div>
+              <div class="road fast"><div class="fill" id="fastFill" style="width:80%"><span class="yours">YOURS</span></div></div>
+            </div>
+            <span class="saved" id="saved">50 days sooner</span>
+            <p class="fine" id="ownDate">An example only. Your dates depend on your own loan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Built for <span class="hl">the road.</span></h2>
+          <p>Everything a rider needs from the stage, nothing they don't.</p>
+        </div>
+        <div class="features">
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/></svg></div>
+            <h3>Automatic daily target</h3>
+            <p>Installment + 7-day average fuel + 15% buffer, recalculated every night. Edit it any time; one tap puts it back on auto.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg></div>
+            <h3>M-Pesa in, M-Pesa out</h3>
+            <p>Till payments fill the ring live. Paste an M-Pesa SMS as a fallback. Pay installments and save with STK push. Get paid by QR.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><path d="M3 3l18 18"/></svg></div>
+            <h3>Works offline</h3>
+            <p>Entries save on the phone first and sync when there's network. Today and Progress run fully from the device.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="11" r="3.5"/></svg></div>
+            <h3>Widget &amp; glance ring</h3>
+            <p>A home-screen widget and an optional notification-bar ring, so progress is one look away without opening the app.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21h4"/></svg></div>
+            <h3>Alerts that matter</h3>
+            <p>When M-Pesa lands, when an installment is confirmed, and 14/7/1 days before insurance, licence, NTSA inspection or county sticker expire.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+            <h3>Insights &amp; streaks</h3>
+            <p>Gold-hours heatmap, best days, fuel KSh/day and km/l, honest net-vs-gross, and installment streak badges at 30, 90 and 180.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.8 6 5.5"/></svg></div>
+            <h3>Stage crew mode</h3>
+            <p>Join your stage with a code. Leaderboards count days you hit your target, never money.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M12 8v5M12 16h.01"/></svg></div>
+            <h3>One-press SOS</h3>
+            <p>Sends your location by SMS or WhatsApp to two people you choose. Read on the phone at press time, never sent to a server.</p>
+          </div>
+          <div class="feat">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 8-7 9"/><path d="M13 21l4-9 4 9M14.5 18h5"/></svg></div>
+            <h3>English &amp; Kiswahili</h3>
+            <p>Full Kiswahili with a little Sheng flavour, plus fingerprint or face unlock and a PIN.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="section" id="privacy">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Your money. Your data. <span class="hl">Yours.</span></h2>
+          <p>Riders use BodaPro free. Financiers and SACCOs see a rider's record only when the rider allows it.</p>
+        </div>
+        <div class="privacy">
+          <ul>
+            <li><span class="tick">✓</span><div><b>We never store your location</b><span>There is no location field anywhere in the database, and an automated test checks it.</span></div></li>
+            <li><span class="tick">✓</span><div><b>Your SACCO sees nothing unless you allow it</b><span>Switch access off any time; it stops right away. Even with access they see only days active, consistency and installment streak. Never trips or amounts.</span></div></li>
+            <li><span class="tick">✓</span><div><b>Leaderboards never show money</b><span>Crew rankings count days on target only.</span></div></li>
+            <li><span class="tick">✓</span><div><b>Download or delete everything</b><span>Export your data as CSV, or delete your account and every record from Settings.</span></div></li>
+            <li><span class="tick sos">SOS</span><div><b>One-press SOS</b><span>Sends your location by SMS or WhatsApp to two people you choose, straight from your phone.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Seen around <span class="hl">the stage.</span></h2>
+          <p>Launch artwork in English and Kiswahili.</p>
+        </div>
+        <div class="gallery" tabindex="0" aria-label="BodaPro launch artwork, scroll sideways">
+          <figure><img src="img/ring.jpg" alt="The target ring showing KSh 750 to go of a KSh 3,000 target" loading="lazy" width="720" height="900"><figcaption>The Ring</figcaption></figure>
+          <figure><img src="img/road.jpg" alt="Bike Yangu road: paying KSh 500 a day instead of 400 owns the bike 50 days sooner" loading="lazy" width="720" height="900"><figcaption>Bike Yangu</figcaption></figure>
+          <figure><img src="img/alerts.jpg" alt="Lock-screen notifications: KSh 550 to go, and M-Pesa KSh 200 landed" loading="lazy" width="720" height="900"><figcaption>Lock-screen alerts</figcaption></figure>
+          <figure><img src="img/privacy.jpg" alt="Privacy promises: location never stored, SACCO sees nothing unless allowed, one-press SOS" loading="lazy" width="720" height="900"><figcaption>Privacy</figcaption></figure>
+          <figure><img src="img/ring-sw.jpg" alt="The target ring in Kiswahili" loading="lazy" width="720" height="900"><figcaption>Kwa Kiswahili</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Under the hood</h2>
+          <p>A monorepo: a Flutter rider app and a Next.js PWA that share one backend and one account.</p>
+        </div>
+        <dl class="stack">
+          <div><dt>Mobile</dt><dd>Flutter · Riverpod · go_router · SQLite offline ledger · WidgetKit &amp; Android widget</dd></div>
+          <div><dt>Web</dt><dd>Next.js 14 PWA + desktop Partner dashboard · Tailwind · TanStack Query</dd></div>
+          <div><dt>Data</dt><dd>PostgreSQL 16 · Drizzle ORM · native Row Level Security, proven by tests</dd></div>
+          <div><dt>Payments</dt><dd>Safaricom Daraja: C2B auto-capture, STK push, Dynamic QR</dd></div>
+          <div><dt>Realtime &amp; push</dt><dd>Postgres LISTEN/NOTIFY → SSE · FCM HTTP v1</dd></div>
+          <div><dt>Security</dt><dd>Phone + PIN (bcrypt), short-lived JWT with rotating refresh, lockout, biometric unlock</dd></div>
+          <div><dt>Money</dt><dd>Integer cents, fuel in millilitres, Africa/Nairobi time everywhere</dd></div>
+          <div><dt>Deploy</dt><dd>Docker Compose: app + Postgres + Caddy + cron backups</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <h2>Ride free. <span class="hl">Own it sooner.</span></h2>
+        <p>BodaPro is free for riders and coming soon to Google Play and the App Store.</p>
+        <a class="btn btn-hiviz" href="../../">See more NaiApps</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© <span id="yr">2026</span> NaiApps · BodaPro</span>
+      <a href="../../">← All apps</a>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/bodapro.js"></script>
+</body>
+</html>

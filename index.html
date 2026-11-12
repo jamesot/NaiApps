@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NaiApps</title>
+  <meta name="description" content="NaiApps — mobile and web apps built in Nairobi for everyday Kenyan work.">
+  <meta property="og:title" content="NaiApps">
+  <meta property="og:description" content="Mobile and web apps built in Nairobi for everyday Kenyan work.">
+  <link rel="icon" href="apps/bodapro/img/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./"><span class="brand-mark">N</span>NaiApps</a>
+      <nav><a href="#apps">Apps</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hub-hero">
+      <p class="eyebrow">Built in Nairobi</p>
+      <h1>Apps for the way<br>Kenya works.</h1>
+      <p>Small, focused apps for riders, crews and everyday hustles: offline-first, M-Pesa-native, and in English and Kiswahili.</p>
+    </section>
+
+    <section id="apps" class="app-grid" aria-label="Apps">
+      <a class="app-card" href="apps/bodapro/">
+        <div class="head">
+          <img src="apps/bodapro/img/icon.png" alt="" width="56" height="56">
+          <div>
+            <h2>BodaPro</h2>
+            <p class="kicker">Rider earnings &amp; bike-loan tracker</p>
+          </div>
+        </div>
+        <p class="blurb">One hi-viz ring shows if you've hit today's target. The Bike Yangu road shows the day your boda becomes yours.</p>
+        <div class="tags">
+          <span class="tag">Flutter</span><span class="tag">Next.js PWA</span><span class="tag">M-Pesa</span><span class="tag">Offline</span>
+        </div>
+        <span class="go">View app →</span>
+      </a>
+
+      <div class="app-card soon">
+        <h2>More apps coming</h2>
+        <p class="blurb">FitCrew and other projects will be added here soon.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© <span id="yr">2026</span> NaiApps</span>
+      <span>Made in Nairobi 🇰🇪</span>
+    </div>
+  </footer>
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
